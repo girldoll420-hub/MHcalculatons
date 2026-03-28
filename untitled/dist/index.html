@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Digital Hub | Hassam Malik</title>
+    <style>
+        :root {
+            --neon-blue: #00eaff;
+            --neon-pink: #ff00ff;
+            --bg-color: #050a10;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(0, 234, 255, 0.2);
+            --pkr-green: #00ffaa;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Elegant Background Lightning --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://i.makeagif.com/media/10-14-2015/v_S7p3.gif');
+            background-size: cover;
+            opacity: 0.1; /* Minimalist Touch */
+            z-index: -1;
+            filter: grayscale(100%) brightness(0.5);
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0, 234, 255, 0.3);
+        }
+
+        header p {
+            color: rgba(255,255,255,0.6);
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* --- LIVE TRACKER (Elegant Style) --- */
+        .tracker-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .tracker-card {
+            background: var(--glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .tracker-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 20px 40px rgba(0, 234, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+        }
+
+        .value {
+            font-size: 1.8rem;
+            font-family: 'Courier New', monospace;
+            color: var(--neon-blue);
+            font-weight: bold;
+        }
+
+        .pkr-value {
+            color: var(--pkr-green);
+            text-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
+        }
+
+        /* --- GRIDS & CARDS --- */
+        h2 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 50px;
+            color: rgba(255,255,255,0.4);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .link-card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .link-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--neon-blue);
+            transform: scale(1.05);
+        }
+
+        .link-card img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .link-card p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: rgba(255,255,255,0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+        }
+
+        footer b {
+            color: var(--neon-blue);
+        }
+
+        /* --- CUSTOM SCROLLBAR --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: #1a2a3a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-blue); }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Global Digital Hub</h1>
+    <p>Powered by <b>HASSAM MALIK</b></p>
+</header>
+
+<div class="container">
+
+    <div class="tracker-section">
+        <div class="tracker-card">
+            <div class="label">USD to PKR (Live Estimate)</div>
+            <div id="pkrRate" class="value pkr-value">Rs. 278.45</div>
+        </div>
+        <div class="tracker-card">
+            <div class="label">USA Total War Loss</div>
+            <div id="usaCost" class="value">Calculating...</div>
+        </div>
+        <div class="tracker-card" style="grid-column: span 1;">
+            <div class="label">Iran Daily Damage</div>
+            <div id="iranCost" class="value" style="color: var(--neon-pink);">Calculating...</div>
+        </div>
+    </div>
+
+    <h2>Social Networks</h2>
+    <div class="grid">
+        <div class="link-card" onclick="window.open('https://facebook.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="">
+            <p>Facebook</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://youtube.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="">
+            <p>YouTube</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://instagram.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="">
+            <p>Instagram</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://tiktok.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="">
+            <p>TikTok</p>
+        </div>
+    </div>
+
+    <h2>Markets & Mobiles</h2>
+    <div class="grid">
+        <div class="link-card" onclick="window.open('https://www.daraz.pk')">
+            <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="">
+            <p>Daraz</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://www.olx.com.pk')">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="">
+            <p>OLX PK</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://www.samsung.com/pk/')">
+            <img src="https://cdn-icons-png.flaticon.com/512/5969/5969116.png" alt="">
+            <p>Samsung</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://www.apple.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="">
+            <p>Apple</p>
+        </div>
+    </div>
+
+    <h2>AI Control Center</h2>
+    <div class="grid">
+        <div class="link-card" onclick="window.open('https://chat.openai.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/12222/12222588.png" alt="">
+            <p>ChatGPT</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://gemini.google.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="">
+            <p>Gemini AI</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://x.ai')">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="">
+            <p>Grok AI</p>
+        </div>
+    </div>
+
+    <h2>Browsers & Gaming</h2>
+    <div class="grid">
+        <div class="link-card" onclick="window.open('https://store.steampowered.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/512/512456.png" alt="">
+            <p>Steam</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://fitgirl-repacks.site')">
+            <img src="https://cdn-icons-png.flaticon.com/512/686/686589.png" alt="">
+            <p>FitGirl Games</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://brave.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968866.png" alt="">
+            <p>Brave</p>
+        </div>
+        <div class="link-card" onclick="window.open('https://duckduckgo.com')">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="">
+            <p>DuckDuckGo</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2026 Crafted for <b>Hassam Malik</b> | Global Hub Premium
+</footer>
+
+<script>
+    // --- DYNAMIC DATA LOGIC ---
+    function startHub() {
+        // War Cost Estimates
+        const usaDaily = 880000000;
+        const iranDaily = 510000000;
+        
+        // Dollar Base Rate
+        let pkrBase = 278.40;
+
+        let now = new Date();
+        let secondsToday = (now.getHours() * 3600) + (now.getMinutes() * 60) + now.getSeconds();
+
+        let usaRate = usaDaily / 86400;
+        let iranRate = iranDaily / 86400;
+
+        let usaTotal = secondsToday * usaRate;
+        let iranTotal = secondsToday * iranRate;
+
+        function update() {
+            // Update War Costs
+            usaTotal += usaRate;
+            iranTotal += iranRate;
+            document.getElementById('usaCost').innerText = "$" + Math.floor(usaTotal).toLocaleString();
+            document.getElementById('iranCost').innerText = "$" + Math.floor(iranTotal).toLocaleString();
+
+            // Update PKR Rate with tiny fluctuation for realism
+            let fluctuation = (Math.random() * 0.04) - 0.02;
+            document.getElementById('pkrRate').innerText = "Rs. " + (pkrBase + fluctuation).toFixed(2);
+        }
+
+        setInterval(update, 1000);
+        update();
+    }
+
+    window.onload = startHub;
+</script>
+
+</body>
+</html>
